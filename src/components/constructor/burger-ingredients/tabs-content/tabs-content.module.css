@@ -1,0 +1,29 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  margin: 0 -12px;
+}
+.item {
+  width: 50%;
+  text-align: center;
+  padding: 0 12px;
+}
+.item:not(:nth-last-of-type(-n+2)) {
+  margin-bottom: 32px;
+}
+.image img {
+  width: 240px;
+  height: 120px;
+}
+.name {
+  height: 48px;
+}
+.price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.price svg{
+  margin-left: 9px;
+}

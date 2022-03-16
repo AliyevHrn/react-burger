@@ -1,0 +1,29 @@
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.ingredients {
+  width: 600px;
+  padding-right: 20px;
+}
+.constructor {
+  width: 600px;
+  padding-left: 20px;
+}
+.scrollsection {
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.constructor .scrollsection {
+  max-height: 576px;
+}
+.scrollsection::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #2F2F37;
+}
+.scrollsection::-webkit-scrollbar-thumb {
+    background: #8585AD;
+}

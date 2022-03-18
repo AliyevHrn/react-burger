@@ -36,26 +36,13 @@ function App() {
 
 	const handleCloseModal = () => {
 		setModalState({...modalState, visibility: 'hidden'});
-		document.body.style.overflow = 'unset';
-	}
-	const closeModalByEscape = (e) => {
-		if(e.key === 'Escape') {
-			setModalState({...modalState, visibility: 'hidden'});
-			document.body.style.overflow = 'unset';
-		}
 	}
 	const handleOpenModal = (name, data) => {
 		setModalState({...modalState, visibility: 'shown', name: name, data: data});
-		document.body.style.overflow = 'hidden';
 	}
 
 	React.useEffect(() => {
 		getData();
-		document.addEventListener('keydown', closeModalByEscape);
-
-		return (() => {
-			document.removeEventListener('keydown', closeModalByEscape);
-		})
 	}, []);
 
 	const { data, isLoading, hasError } = state;

@@ -22,9 +22,9 @@ function ConstructorItem(props) {
 
 ConstructorItem.propTypes= {
   handleOpenModal: PropTypes.func,
-  name: PropTypes.string,
-  price: PropTypes.number,
-  image_mobile: PropTypes.string
+  name: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  image_mobile: PropTypes.string.isRequired
 }
 
 export default ConstructorItem;

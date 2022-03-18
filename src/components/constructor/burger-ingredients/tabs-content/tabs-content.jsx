@@ -5,7 +5,7 @@ import IngredientsItem from '../ingredients-item/ingredients-item';
 
 function Section(props) {
   return (
-    <div>
+    <div className={Styles.section}>
       <h2 className="text text_type_main-medium mb-6">{props.title}</h2>
       <div className={Styles.list}>
         {props.children}
@@ -14,7 +14,7 @@ function Section(props) {
   )
 }
 Section.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.string.isRequired,
   children: PropTypes.array.isRequired
 }
 

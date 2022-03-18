@@ -3,7 +3,7 @@
   display: flex;
   align-items: center;
 }
-.nav-btn {
+.nav__btn {
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -11,19 +11,19 @@
   border-radius: 40px;
   cursor: pointer;
 }
-.nav-btn svg {
+.nav__btn svg {
   fill: #8585AD;
 }
-.nav-btn:last-child{
+.nav__btn:last-child{
   margin-left: auto;
 }
-.nav-btn_current {
+.nav__btn_current {
   color: #F2F2F3;
 }
-.nav-btn_current svg{
+.nav__btn_current svg{
   fill: #F2F2F3;
 }
-.nav-btn_personal {
+.nav__btn_personal {
   margin-left: auto;
 }
 .logo {

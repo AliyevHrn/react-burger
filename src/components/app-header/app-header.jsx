@@ -1,13 +1,13 @@
 import React from 'react';
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
-import './app-header.css';
+import Styles from './app-header.module.css';
 
 function NavItem(props) {
-  const className = `${props.active ? 'nav-btn_current' : ''}`;
+  const className = `${props.active ? Styles.nav__btn_current : ''}`;
 
   return (
-    <div className={`${className} nav-btn pt-4 pr-5 pb-4 pl-5`} onClick={props.handleClick}
+    <div className={`${className} ${Styles.nav__btn} pt-4 pr-5 pb-4 pl-5`} onClick={props.handleClick}
     >
       <div className='mr-2'>
         {props.icon}
@@ -17,13 +17,15 @@ function NavItem(props) {
   )
 }
 NavItem.propTypes = {
-  props: PropTypes.func,
-  icon: PropTypes.object
+  handleClick: PropTypes.func,
+  icon: PropTypes.object.isRequired,
+  name: PropTypes.string.isRequired,
+  active: PropTypes.bool
 }
 
 function AppLogo() {
   return (
-    <div className="logo">
+    <div className={Styles.logo}>
       <Logo/>
     </div>
   )
@@ -34,7 +36,7 @@ function AppHeader() {
 
   return (
     <header className="pt-4 pb-4">
-      <nav className="nav">
+      <nav className={Styles.nav}>
         <AppLogo />
         <NavItem
           name='Конструктор'

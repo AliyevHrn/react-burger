@@ -19,8 +19,9 @@ function IngredientsItem(props) {
   )
 }
 IngredientsItem.propTypes= {
-  price: PropTypes.number,
-  name: PropTypes.string,
-  image: PropTypes.string
+  handleOpenModal: PropTypes.func,
+  price: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  image: PropTypes.string.isRequired
 }
 export default IngredientsItem;

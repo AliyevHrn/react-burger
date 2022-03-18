@@ -15,6 +15,6 @@ function TotalPrice(props) {
   )
 }
 TotalPrice.propTypes= {
-  totalPrice: PropTypes.number
+  totalPrice: PropTypes.number.isRequired
 }
 export default TotalPrice;

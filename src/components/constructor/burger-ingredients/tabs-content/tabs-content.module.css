@@ -4,26 +4,16 @@
   padding: 0 16px;
   margin: 0 -12px;
 }
-.item {
-  width: 50%;
-  text-align: center;
-  padding: 0 12px;
+.scrollsection {
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
-.item:not(:nth-last-of-type(-n+2)) {
-  margin-bottom: 32px;
+.scrollsection::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #2F2F37;
 }
-.image img {
-  width: 240px;
-  height: 120px;
-}
-.name {
-  height: 48px;
-}
-.price {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.price svg{
-  margin-left: 9px;
+.scrollsection::-webkit-scrollbar-thumb {
+  background: #8585AD;
 }

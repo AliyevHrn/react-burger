@@ -1,12 +1,13 @@
 import React from 'react';
 import { Logo, BurgerIcon, ListIcon, ProfileIcon } from '@ya.praktikum/react-developer-burger-ui-components';
+import PropTypes from 'prop-types';
 import './app-header.css';
 
 function NavItem(props) {
   const className = `${props.active ? 'nav-btn_current' : ''}`;
 
   return (
-    <div className={`${className} nav-btn pt-4 pr-5 pb-4 pl-5`} onClick={props.onClick}
+    <div className={`${className} nav-btn pt-4 pr-5 pb-4 pl-5`} onClick={props.handleClick}
     >
       <div className='mr-2'>
         {props.icon}
@@ -14,6 +15,10 @@ function NavItem(props) {
       <span className="text text_type_main-default">{props.name}</span>
     </div>
   )
+}
+NavItem.propTypes = {
+  props: PropTypes.func,
+  icon: PropTypes.object
 }
 
 function AppLogo() {
@@ -23,7 +28,6 @@ function AppLogo() {
     </div>
   )
 }
-
 
 function AppHeader() {
   const [current, setCurrent] = React.useState('constructor');
@@ -36,17 +40,17 @@ function AppHeader() {
           name='Конструктор'
           icon={<BurgerIcon/>}
           active={current === 'constructor'}
-          onClick={() => setCurrent('constructor')} />
+          handleClick={() => setCurrent('constructor')} />
         <NavItem
           name='Лента заказов'
           icon={<ListIcon/>}
           active={current === 'orders'}
-          onClick={() => setCurrent('orders')} />
+          handleClick={() => setCurrent('orders')} />
         <NavItem
           name='Личный кабинет'
           icon={<ProfileIcon/>}
           active={current === 'personal'}
-          onClick={() => setCurrent('personal')} />
+          handleClick={() => setCurrent('personal')} />
       </nav>
     </header>
   )

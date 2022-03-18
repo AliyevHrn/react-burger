@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 function ConstructorItem(props) {
 
   return (
-    <div className={Styles.item} onClick={props.handleOpenModal}>
+    <div className={Styles.item}>
       <div className="drag mr-2">
         <DragIcon type="primary" />
       </div>
@@ -26,4 +26,5 @@ ConstructorItem.propTypes= {
   price: PropTypes.number,
   image_mobile: PropTypes.string
 }
+
 export default ConstructorItem;

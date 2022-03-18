@@ -12,7 +12,7 @@
   display: block;
 }
 .modal-window {
-  position: absolute;
+  position: fixed;
   left: 50%;
   top: 50%;
   width: 720px;
@@ -33,12 +33,6 @@
   background: rgba(0, 0, 0, 0.6);
   z-index: 1;
 }
-.ingredient-title {
-  font-weight: 700;
-  font-size: 36px;
-  line-height: 40px;
-  color: #F2F2F3;
-}
 .modal-close {
   position: absolute;
   top: 60px;
@@ -47,12 +41,4 @@
 }
 .modal-body {
   text-align: center;
-}
-.modal-ingredients {
-  display: flex;
-  justify-content: center;
-  margin: 0 -20px;
-}
-.modal-ingredients__item {
-  padding: 0 20px;
 }

@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import Styles from './ingredient-details.module.css';
 
 function IngredientDetail(props) {
   return (
@@ -7,20 +8,20 @@ function IngredientDetail(props) {
       <p className="text text_type_main-medium mt-4 mb-8">
         {props.name}
       </p>
-      <div className="modal-ingredients">
-        <div className="modal-ingredients__item">
+      <div className={Styles.modal__ingredients}>
+        <div className={Styles.ingredients__item}>
           <p className="text text_type_main-default text_color_inactive mb-2">Калории,ккал</p>
           <p className="text text_type_digits-default text_color_inactive">{props.calories}</p>
         </div>
-        <div className="modal-ingredients__item">
+        <div className={Styles.ingredients__item}>
           <p className="text text_type_main-default text_color_inactive mb-2">Белки, г</p>
           <p className="text text_type_digits-default text_color_inactive">{props.proteins}</p>
         </div>
-        <div className="modal-ingredients__item">
+        <div className={Styles.ingredients__item}>
           <p className="text text_type_main-default text_color_inactive mb-2">Жиры, г</p>
           <p className="text text_type_digits-default text_color_inactive">{props.fat}</p>
         </div>
-        <div className="modal-ingredients__item">
+        <div className={Styles.ingredients__item}>
           <p className="text text_type_main-default text_color_inactive mb-2">Углеводы, г</p>
           <p className="text text_type_digits-default text_color_inactive">{props.carbohydrates}</p>
         </div>
@@ -31,9 +32,9 @@ function IngredientDetail(props) {
 IngredientDetail.propTypes= {
   name: PropTypes.string,
   image_larger: PropTypes.string,
-  calories: PropTypes.string,
-  proteins: PropTypes.string,
-  fat: PropTypes.string,
-  carbohydrates: PropTypes.string
+  calories: PropTypes.number,
+  proteins: PropTypes.number,
+  fat: PropTypes.number,
+  carbohydrates: PropTypes.number
 }
 export default IngredientDetail;

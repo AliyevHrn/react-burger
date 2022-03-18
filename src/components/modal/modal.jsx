@@ -10,7 +10,7 @@ function Modal ({header, children, onClose, state}) {
 
   return ReactDOM.createPortal(
     <>
-      <div className={state === 'shown' ? 'Modal shown' : 'Modal hidden'} onKeyDown={onClose}>
+      <div className={state === 'shown' ? 'Modal shown' : 'Modal hidden'}>
         <div className='modal-window'>
           <ModalHeader header={header} onClose={onClose}/>
           <div className="modal-body">

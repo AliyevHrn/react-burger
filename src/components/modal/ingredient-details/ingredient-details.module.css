@@ -1,0 +1,8 @@
+.modal__ingredients {
+  display: flex;
+  justify-content: center;
+  margin: 0 -20px;
+}
+.ingredients__item {
+  padding: 0 20px;
+}

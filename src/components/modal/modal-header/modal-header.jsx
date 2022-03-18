@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 function ModalHeader(props) {
   return (
     <div className="modal-header">
-      <h3 className="ingredient-title">{props.header}</h3>
+      <h3 className="text text_type_main-large">{props.header}</h3>
       <span className="modal-close" onClick={props.onClose}>
         <CloseIcon type="primary" />
       </span>

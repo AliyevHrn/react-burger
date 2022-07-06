@@ -1,0 +1,21 @@
+.constructor {
+  width: 600px;
+  padding-left: 20px;
+}
+.scrollsection {
+  max-height: 460px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scrollsection::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #2F2F37;
+}
+.scrollsection::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}
+.totalBlock {
+  display: flex;
+  justify-content: flex-end;
+}

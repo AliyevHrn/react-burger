@@ -1,0 +1,22 @@
+.section:not(:last-child) {
+  margin-bottom: 40px;
+}
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 16px;
+  margin: 0 -12px;
+}
+.scrollsection {
+  max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.scrollsection::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #2F2F37;
+}
+.scrollsection::-webkit-scrollbar-thumb {
+  background: #8585AD;
+}

@@ -1,0 +1,15 @@
+.totalPrice {
+  display: flex;
+  align-items: center;
+}
+.totalPrice > p {
+  margin-right: 10px;
+}
+.cyrrencyIcon {
+  width: 33px;
+  height: 33px;
+}
+.cyrrencyIcon svg {
+  width: inherit;
+  height: inherit;
+}

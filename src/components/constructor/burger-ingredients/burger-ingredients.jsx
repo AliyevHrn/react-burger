@@ -1,17 +1,15 @@
+import React from "react";
 import TabsList from './tabs-list/tabs-list';
-import PropTypes from 'prop-types';
 import Styles from './burger-ingredients.module.css';
+import TabsContent from '../burger-ingredients/tabs-content/tabs-content';
 
-function BurgerIngredients(props) {
+function BurgerIngredients() {
   return (
     <div className={Styles.ingredients}>
       <TabsList />
-      {props.children}
+      <TabsContent/>
     </div>
   )
 }
-BurgerIngredients.propTypes = {
-  children: PropTypes.node.isRequired
-};
 
 export default BurgerIngredients;

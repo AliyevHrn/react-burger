@@ -1,79 +1,52 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import AppHeader from '../app-header/app-header';
 import Constructor from '../constructor/constructor';
-import BurgerIngredients from '../constructor/burger-ingredients/burger-ingredients';
-import TabsContent from '../constructor/burger-ingredients/tabs-content/tabs-content';
-import BurgerConstructor from '../constructor/burger-constructor/burger-constructor';
 import IngredientDetail from '../modal/ingredient-details/ingredient-details';
 import OrderDetails from '../modal/order-details/order-details';
 import Modal from '../modal/modal';
+import { useSelector, useDispatch } from 'react-redux';
+import { CLOSE_INGREDIENT } from '../../services/actions/ingredient-detail';
+import { CLOSE_ORDER } from '../../services/actions/order-request';
 
 
 function App() {
 
-	const url = 'https://norma.nomoreparties.space/api/ingredients';
 
-	const [state, setState] = React.useState({
-		isLoading: false,
-		hasError: false,
-		data: [],
-	});
-	const [modalState, setModalState] = React.useState({
-		visibility: 'hidden',
-		name: '',
-		data: [],
-	});
+	const { isShowed } = useSelector(store => {
+		return store.ingredient;
+	})
+	const { orderShowed, orderNumber } = useSelector(store => {
+		return store.order;
+	})
 
-	const getData = () => {
-		setState({ ...state, hasError: false, isLoading: true });
-		fetch(url)
-			.then((res) => res.json())
-			.then((data) => setState({ ...state, data: data.data, isLoading: false }))
-			.catch((e) => {
-				setState({ ...state, hasError: true, isLoading: false });
-			});
-	};
+	const dispatch = useDispatch();
 
-	const handleCloseModal = () => {
-		setModalState({...modalState, visibility: 'hidden'});
+	const closeIngredientModal = () => {
+		dispatch({
+			type: CLOSE_INGREDIENT,
+		})
 	}
-	const handleOpenModal = (name, data) => {
-		setModalState({...modalState, visibility: 'shown', name: name, data: data});
+	const closeeOrderModal = () => {
+		dispatch({
+			type: CLOSE_ORDER,
+		})
 	}
-
-	React.useEffect(() => {
-		getData();
-	}, []);
-
-	const { data, isLoading, hasError } = state;
 
 	return (
 		<>
 			<AppHeader />
 			<main className="pl-5 pr-5 mt-10">
-				{isLoading && 'Загрузка...'}
-				{hasError && 'Произошла ошибка'}
-				{!isLoading && !hasError && data.length &&
-				 	<Constructor>
-						<BurgerIngredients>
-							<TabsContent data={data} handleOpenModal={handleOpenModal}/>
-						</BurgerIngredients>
-						<BurgerConstructor data={data} handleOpenModal={handleOpenModal}/>
-					</Constructor>
-				}
+					<Constructor/>
 			</main>
-			{modalState.visibility === 'shown' &&
-				<>
-					<Modal state={modalState.name === 'ingredients' ? modalState.visibility : ''} onClose={handleCloseModal} header={'Детали ингредиента'}>
-						<IngredientDetail {...modalState.data} />
-					</Modal>
-					<Modal state={modalState.name === 'order' ? modalState.visibility : ''} onClose={handleCloseModal}>
-						<OrderDetails id='535353'/>
-					</Modal>
-				</>
-			}
+			<Modal onClose={closeIngredientModal} header={'Детали ингредиента'} state={isShowed}>
+				<IngredientDetail />
+			</Modal>
+			<Modal onClose={closeeOrderModal} state={orderShowed}>
+				<OrderDetails id={orderNumber}/>
+			</Modal>
 		</>
 	);
+
 }
 
 export default App;

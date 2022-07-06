@@ -5,3 +5,9 @@
 .item:not(:last-child) {
   margin-bottom: 16px;
 }
+.dragIcon {
+  cursor: move;
+}
+.opacity {
+  opacity: 1;
+}

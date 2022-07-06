@@ -6,3 +6,6 @@
 .ingredients__item {
   padding: 0 20px;
 }
+.img {
+  min-height: 240px;
+}

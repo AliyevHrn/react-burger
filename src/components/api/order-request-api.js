@@ -9,9 +9,5 @@ export const sendRequest = async (data) => {
 		body: JSON.stringify({
 			ingredients: data,
 		}),
-	})
-		.then((res) => res.json())
-		.catch((err) => {
-			throw new Error(err);
-		});
+	}).then((res) => res.json());
 };

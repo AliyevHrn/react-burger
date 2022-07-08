@@ -9,14 +9,15 @@ import { OPEN_INGREDIENT } from '../../../../services/actions/ingredient-detail'
 function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const { constructorItems } = useSelector(store => ({
-    constructorItems: store.ingredients.constructorItems
+    constructorItems: store.ingredients
   }));
 
   const ingredientCounter = useMemo(() => {
     let counter = 0;
-    constructorItems.forEach((ingredient) => {
+    constructorItems.constructorItems.forEach((ingredient) => {
       if (ingredient._id === _id) counter++;
     });
+    if (constructorItems.bun._id === _id) counter++;
     return counter;
   }, [constructorItems]);
 

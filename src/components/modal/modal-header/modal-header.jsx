@@ -1,3 +1,4 @@
+import React from "react";
 import { CloseIcon } from "@ya.praktikum/react-developer-burger-ui-components";
 import PropTypes from 'prop-types';
 import Styles from './modal-header.module.css';

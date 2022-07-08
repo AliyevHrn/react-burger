@@ -5,6 +5,7 @@
 }
 .item > div {
   cursor: pointer;
+  position: relative;
 }
 .item:not(:nth-last-of-type(-n+2)) {
   margin-bottom: 32px;
@@ -23,4 +24,18 @@
 }
 .price svg{
   margin-left: 9px;
+}
+.counter {
+  position: absolute;
+  font-family: 'Iceland';
+  width: 32px;
+  height: 32px;
+  right: 0;
+  top: 0;
+  background: #4C4CFF;
+  border-radius: 16px;
+  color: #F2F2F3;
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 32px;
 }

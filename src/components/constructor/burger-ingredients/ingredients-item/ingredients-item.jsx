@@ -2,10 +2,11 @@ import React, { useMemo } from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 import PropTypes from 'prop-types';
 import Styles from './ingredients-item.module.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-dnd';
+import { OPEN_INGREDIENT } from '../../../../services/actions/ingredient-detail';
 
-function IngredientsItem({ _id, type, handleOpenModal, image, name, price }) {
+function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const { constructorItems } = useSelector(store => ({
     constructorItems: store.ingredients.constructorItems
@@ -29,10 +30,19 @@ function IngredientsItem({ _id, type, handleOpenModal, image, name, price }) {
   });
 
 
+  const dispatch = useDispatch();
+  const openIngredientDetail = item => {
+    dispatch({
+      type: OPEN_INGREDIENT,
+      ingredientData: item
+    })
+  }
+
+
   return (
     !isDrag &&
     <div className={Styles.item}>
-      <div onClickCapture={handleOpenModal} ref={dragRef}>
+      <div onClickCapture={() => openIngredientDetail(data)} ref={dragRef}>
         {ingredientCounter > 0 &&
           <span className={Styles.counter}>{ingredientCounter}</span>
         }

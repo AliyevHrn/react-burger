@@ -3,7 +3,7 @@ import Styles from './total-price.module.css';
 import { useSelector } from 'react-redux';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
 
-function TotalPrice(props) {
+function TotalPrice() {
 
   const constructorItems = useSelector(store => store.ingredients);
 

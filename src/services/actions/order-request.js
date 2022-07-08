@@ -16,6 +16,7 @@ export function sendNewRequest(data) {
 						type: SEND_ORDER_SUCCESS,
 						payload: res.order.number,
 					});
+					console.log(res);
 				} else {
 					dispatch({
 						type: SEND_ORDER_FAILED,

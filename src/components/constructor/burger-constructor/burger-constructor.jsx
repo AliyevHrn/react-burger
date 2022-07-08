@@ -1,13 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import { ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
-import ConstructorItem from '../constructor-item/constructor-item';
+import ConstructorItem from './constructor-item/constructor-item';
 import TotalPrice from '../total-price/total-price';
 import OrderCheckout from '../order-checkout/order-checkout';
 import Styles from './burger-constructor.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems } from '../../../services/actions/ingredients';
 import { useDrop } from 'react-dnd';
-import { ADD_INGREDIENT, ADD_BUN, CHANGE_INGREDIENT_POSITION } from '../../../services/actions/ingredients';
+import { ADD_INGREDIENT, ADD_BUN } from '../../../services/actions/ingredients';
 
 
 function BurgerConstructor(props) {
@@ -19,12 +19,10 @@ function BurgerConstructor(props) {
     constructorItems: store.ingredients.constructorItems
   }));
 
-
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getItems());
   }, [dispatch])
-
 
   const addIngredient = itemId => {
     dispatch({

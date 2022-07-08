@@ -70,21 +70,12 @@ export const ingredientsReducer = (state = initialState, action) => {
 				],
 			};
 		}
-		// case CHANGE_INGREDIENT_POSITION: {
-		// 	return {
-		// 		...state,
-		// 		constructorItems: [
-		// 			...state.constructorItems,
-		// 			...state.constructorItems.sort((item, action) => {
-		// 				if (item.index > action.index) {
-		// 					return 1;
-		// 				} else {
-		// 					return -1;
-		// 				}
-		// 			}),
-		// 		],
-		// 	};
-		// }
+		case CHANGE_INGREDIENT_POSITION: {
+			return {
+				...state,
+				constructorItems: [...action.payload],
+			};
+		}
 		default: {
 			return state;
 		}

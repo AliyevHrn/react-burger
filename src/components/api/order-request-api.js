@@ -11,5 +11,7 @@ export const sendRequest = async (data) => {
 		}),
 	})
 		.then((res) => res.json())
-		.catch((err) => console.error(err));
+		.catch((err) => {
+			throw new Error(err);
+		});
 };

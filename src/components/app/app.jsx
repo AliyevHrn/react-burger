@@ -8,6 +8,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { closeIngredient } from '../../services/actions/ingredient-detail';
 import { closeOrder } from '../../services/actions/order-request';
 import Preloader from '../constructor/burger-constructor/preloader/preloader';
+import { resetOrder } from '../../services/actions/ingredients';
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
 	}
 	const closeOrderModal = () => {
 		dispatch(closeOrder());
+		dispatch(resetOrder());
 	}
 
 	return (

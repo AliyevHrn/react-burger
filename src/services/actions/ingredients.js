@@ -8,6 +8,7 @@ export const ADD_INGREDIENT = 'ADD_INGREDIENT';
 export const ADD_BUN = 'ADD_BUN';
 export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
 export const CHANGE_INGREDIENT_POSITION = 'CHANGE_INGREDIENT_POSITION';
+export const RESET_ORDER = 'RESET_ORDER';
 
 function getItemsRequest() {
 	return {
@@ -50,6 +51,11 @@ export function changeIngredientPosition(sortItems) {
 	return {
 		type: CHANGE_INGREDIENT_POSITION,
 		payload: sortItems,
+	};
+}
+export function resetOrder() {
+	return {
+		type: RESET_ORDER,
 	};
 }
 

@@ -6,6 +6,7 @@ import {
 	ADD_BUN,
 	DELETE_INGREDIENT,
 	CHANGE_INGREDIENT_POSITION,
+	RESET_ORDER,
 } from '../actions/ingredients';
 
 const initialState = {
@@ -65,6 +66,12 @@ export const ingredientsReducer = (state = initialState, action) => {
 			return {
 				...state,
 				constructorItems: [...action.payload],
+			};
+		}
+		case RESET_ORDER: {
+			return {
+				...state,
+				constructorItems: [],
 			};
 		}
 		default: {

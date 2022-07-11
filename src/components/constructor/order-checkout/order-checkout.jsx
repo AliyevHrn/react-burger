@@ -7,16 +7,19 @@ import { sendNewRequest } from '../../../services/actions/order-request';
 
 function OrderCheckout() {
 
-  const { items } = useSelector(store => ({
-    items: store.ingredients.items,
-  }));
   const { bun } = useSelector(store => ({
     bun: store.ingredients.bun,
+  }))
+  const { constructorItems } = useSelector(store => ({
+    constructorItems: store.ingredients.constructorItems,
   }))
 
   const dispatch = useDispatch();
 
-  const ingredientIds = items.map(item => item._id);
+  let ingredientIds = [bun._id];
+  constructorItems.map(item => {
+    ingredientIds.push(item._id);
+  });
 
   const confirmOrder = () => {
     if(Object.keys(bun).length > 0) {
@@ -24,7 +27,7 @@ function OrderCheckout() {
     } else {
       return false;
     }
-    dispatch(sendNewRequest(ingredientIds))
+    dispatch(sendNewRequest(ingredientIds));
   };
 
   return (

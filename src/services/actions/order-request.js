@@ -1,29 +1,30 @@
 import { sendRequest } from '../../components/api/order-request-api';
+
 export const SEND_ORDER_REQUEST = 'SEND_ORDER_REQUEST';
 export const SEND_ORDER_SUCCESS = 'SEND_ORDER_SUCCESS';
 export const SEND_ORDER_FAILED = 'SEND_ORDER_FAILED';
-export const CLOSE_ORDER = 'CLOSE_ORDER'; 
+export const CLOSE_ORDER = 'CLOSE_ORDER';
 
 function sendOrderRequest() {
 	return {
-		type: SEND_ORDER_REQUEST
-	}
+		type: SEND_ORDER_REQUEST,
+	};
 }
 function sendOrderSuccess(orderNumber) {
 	return {
 		type: SEND_ORDER_SUCCESS,
-		payload: orderNumber
-	}
+		payload: orderNumber,
+	};
 }
 function sendOrderFailed() {
 	return {
-		type: SEND_ORDER_FAILED
-	}
+		type: SEND_ORDER_FAILED,
+	};
 }
 export function closeOrder() {
 	return {
-		type: CLOSE_ORDER
-	}
+		type: CLOSE_ORDER,
+	};
 }
 
 export function sendNewRequest(data) {
@@ -39,7 +40,6 @@ export function sendNewRequest(data) {
 			})
 			.catch((err) => {
 				dispatch(sendOrderFailed());
-			})
-	}
+			});
+	};
 }
-

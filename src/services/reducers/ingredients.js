@@ -46,7 +46,10 @@ export const ingredientsReducer = (state = initialState, action) => {
 					...state.constructorItems,
 					...state.items.filter((item) => {
 						if (item.type !== 'bun') {
-							return item._id === action._id;
+							if(item._id === action._id) {
+								item.uuid = action.uuid								
+								return item._id === action._id, 									
+							}							
 						}
 					}),
 				],

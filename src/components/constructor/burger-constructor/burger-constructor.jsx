@@ -7,10 +7,10 @@ import Styles from './burger-constructor.module.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { getItems } from '../../../services/actions/ingredients';
 import { useDrop } from 'react-dnd';
-import { ADD_INGREDIENT, ADD_BUN } from '../../../services/actions/ingredients';
+import { addIngredient, addBun } from '../../../services/actions/ingredients';
 
 
-function BurgerConstructor(props) {
+function BurgerConstructor() {
 
   const { bun } = useSelector(store => ({
     bun: store.ingredients.bun,
@@ -24,18 +24,6 @@ function BurgerConstructor(props) {
     dispatch(getItems());
   }, [dispatch])
 
-  const addIngredient = itemId => {
-    dispatch({
-      type: ADD_INGREDIENT,
-      ...itemId
-    });
-  }
-  const addBun = itemId => {
-    dispatch({
-      type: ADD_BUN,
-      ...itemId
-    });
-  }
 
   const [{ isHoverConstructor }, ingredientsTarget] = useDrop({
     accept: ['sauce', 'main'],
@@ -43,7 +31,7 @@ function BurgerConstructor(props) {
       isHoverConstructor: monitor.isOver()
     }),
     drop(itemId) {
-      addIngredient(itemId);
+      dispatch(addIngredient(itemId));
     },
   });
 
@@ -53,9 +41,11 @@ function BurgerConstructor(props) {
       isHoverBun: monitor.isOver()
     }),
     drop(itemId) {
-      addBun(itemId);
+      dispatch(addBun(itemId));
     },
   });
+
+  console.log(constructorItems);
 
 
   return (
@@ -84,7 +74,7 @@ function BurgerConstructor(props) {
                 return (
                   <ConstructorItem
                   {...item}
-                  key={index}
+                  key={item.uuid}
                   index={index}
                   />
                 )
@@ -117,7 +107,7 @@ function BurgerConstructor(props) {
         </div>
         <div className={`${Styles.totalBlock} mt-10 mb-10 pr-10`}>
           <TotalPrice/>
-          <OrderCheckout handleOpenModal={props.handleOpenModal}/>
+          <OrderCheckout/>
         </div>
       </div>
   )

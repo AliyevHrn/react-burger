@@ -10,13 +10,20 @@ function OrderCheckout() {
   const { items } = useSelector(store => ({
     items: store.ingredients.items,
   }));
+  const { bun } = useSelector(store => ({
+    bun: store.ingredients.bun,
+  }));
 
   const dispatch = useDispatch();
 
   const ingredientIds = items.map(item => item._id);
 
   const confirmOrder = () => {
-    dispatch(sendNewRequest(ingredientIds));
+    if(Object.keys(bun).length > 0) {
+      dispatch(sendNewRequest(ingredientIds));
+    } else {
+      return false;
+    }
   };
 
   return (

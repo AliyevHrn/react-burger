@@ -2,31 +2,43 @@ import { sendRequest } from '../../components/api/order-request-api';
 export const SEND_ORDER_REQUEST = 'SEND_ORDER_REQUEST';
 export const SEND_ORDER_SUCCESS = 'SEND_ORDER_SUCCESS';
 export const SEND_ORDER_FAILED = 'SEND_ORDER_FAILED';
-export const CLOSE_ORDER = 'CLOSE_ORDER';
+export const CLOSE_ORDER = 'CLOSE_ORDER'; 
+
+function sendOrderRequest() {
+	return {
+		type: SEND_ORDER_REQUEST
+	}
+}
+function sendOrderSuccess(orderNumber) {
+	return {
+		type: SEND_ORDER_SUCCESS,
+		payload: orderNumber
+	}
+}
+function sendOrderFailed() {
+	return {
+		type: SEND_ORDER_FAILED
+	}
+}
+export function closeOrder() {
+	return {
+		type: CLOSE_ORDER
+	}
+}
 
 export function sendNewRequest(data) {
 	return function (dispatch) {
-		dispatch({
-			type: SEND_ORDER_REQUEST,
-		});
+		dispatch(sendOrderRequest());
 		sendRequest(data)
 			.then((res) => {
 				if (res && res.success) {
-					dispatch({
-						type: SEND_ORDER_SUCCESS,
-						payload: res.order.number,
-					});
-					console.log(res);
+					dispatch(sendOrderSuccess(res.order.number));
 				} else {
-					dispatch({
-						type: SEND_ORDER_FAILED,
-					});
+					dispatch(sendOrderFailed());
 				}
 			})
 			.catch((err) => {
-				dispatch({
-					type: SEND_ORDER_FAILED,
-				});
+				dispatch(sendOrderFailed());
 			});
 	};
 }

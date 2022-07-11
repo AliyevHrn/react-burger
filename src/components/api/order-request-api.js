@@ -1,4 +1,5 @@
 import { BASE_URL } from './api';
+import checkResponse from '../../utils/check-response.js';
 
 export const sendRequest = async (data) => {
 	return await fetch(`${BASE_URL}/orders`, {
@@ -9,5 +10,5 @@ export const sendRequest = async (data) => {
 		body: JSON.stringify({
 			ingredients: data,
 		}),
-	}).then((res) => res.json());
+	}).then(checkResponse);
 };

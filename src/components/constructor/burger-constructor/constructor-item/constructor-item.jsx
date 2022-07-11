@@ -1,11 +1,11 @@
 import React, { useRef } from "react";
 import Styles from "./constructor-item.module.css";
 import { DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-dnd';
-import { CHANGE_INGREDIENT_POSITION, DELETE_INGREDIENT } from "../../../../services/actions/ingredients";
+import { changeIngredientPosition, deleteIngredient } from "../../../../services/actions/ingredients";
 import { useDrop } from "react-dnd";
+import { ingredientType } from '../../../../utils/types';
 
 function ConstructorItem({_id, index, name, price, image_mobile}) {
 
@@ -16,10 +16,7 @@ function ConstructorItem({_id, index, name, price, image_mobile}) {
   const dispatch = useDispatch();
 
   const onDelete = () => {
-    dispatch({
-      type: DELETE_INGREDIENT,
-      payload: index
-    });
+    dispatch(deleteIngredient(index));
   };
 
   const onMoveItem = (dragIndex, hoverIndex) => {
@@ -27,11 +24,7 @@ function ConstructorItem({_id, index, name, price, image_mobile}) {
     const dragElement = constructorItems.splice(dragIndex, 1);
     constructorItems.splice(hoverIndex, 0, dragElement[0]);
 
-    dispatch({
-      type: CHANGE_INGREDIENT_POSITION,
-      payload: constructorItems
-    })
-
+    dispatch(changeIngredientPosition(constructorItems));
   }
 
   const ref = useRef(null)
@@ -92,12 +85,7 @@ function ConstructorItem({_id, index, name, price, image_mobile}) {
   )
 }
 
-ConstructorItem.propTypes= {
-  index: PropTypes.number.isRequired,
-  _id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  price: PropTypes.number.isRequired,
-  image_mobile: PropTypes.string.isRequired
-}
+
+ConstructorItem.propTypes = ingredientType;
 
 export default ConstructorItem;

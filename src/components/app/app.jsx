@@ -5,14 +5,14 @@ import IngredientDetail from '../modal/ingredient-details/ingredient-details';
 import OrderDetails from '../modal/order-details/order-details';
 import Modal from '../modal/modal';
 import { useSelector, useDispatch } from 'react-redux';
-import { CLOSE_INGREDIENT } from '../../services/actions/ingredient-detail';
-import { CLOSE_ORDER } from '../../services/actions/order-request';
+import { closeIngredient } from '../../services/actions/ingredient-detail';
+import { closeOrder } from '../../services/actions/order-request';
 
 
 function App() {
 
 
-	const { isShowed } = useSelector(store => {
+	const { ingredientShowed } = useSelector(store => {
 		return store.ingredient;
 	})
 	const { orderShowed, orderNumber } = useSelector(store => {
@@ -22,26 +22,22 @@ function App() {
 	const dispatch = useDispatch();
 
 	const closeIngredientModal = () => {
-		dispatch({
-			type: CLOSE_INGREDIENT,
-		})
+		dispatch(closeIngredient());
 	}
-	const closeeOrderModal = () => {
-		dispatch({
-			type: CLOSE_ORDER,
-		})
+	const closeOrderModal = () => {
+		dispatch(closeOrder());
 	}
 
 	return (
 		<>
 			<AppHeader />
 			<main className="pl-5 pr-5 mt-10">
-					<Constructor/>
+				<Constructor/>
 			</main>
-			<Modal onClose={closeIngredientModal} header={'Детали ингредиента'} state={isShowed}>
+			<Modal onClose={closeIngredientModal} header={'Детали ингредиента'} state={ingredientShowed}>
 				<IngredientDetail />
 			</Modal>
-			<Modal onClose={closeeOrderModal} state={orderShowed}>
+			<Modal onClose={closeOrderModal} state={orderShowed}>
 				<OrderDetails id={orderNumber}/>
 			</Modal>
 		</>

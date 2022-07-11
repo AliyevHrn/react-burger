@@ -40,8 +40,9 @@ function Modal ({header, children, onClose, state}) {
   );
 }
 Modal.propTypes = {
-  // state: PropTypes.boolean.isRequired,
+  state: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
-  header: PropTypes.string
+  header: PropTypes.string,
+  children: PropTypes.node
 }
 export default Modal;

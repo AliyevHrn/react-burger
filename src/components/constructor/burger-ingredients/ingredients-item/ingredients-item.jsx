@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { CurrencyIcon } from '@ya.praktikum/react-developer-burger-ui-components';
-import PropTypes from 'prop-types';
 import Styles from './ingredients-item.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-dnd';
-import { OPEN_INGREDIENT } from '../../../../services/actions/ingredient-detail';
+import { openIngredient } from '../../../../services/actions/ingredient-detail';
+import { ingredientType } from '../../../../utils/types';
 
 function IngredientsItem({ data, _id, type, image, name, price }) {
 
@@ -33,10 +33,7 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const dispatch = useDispatch();
   const openIngredientDetail = item => {
-    dispatch({
-      type: OPEN_INGREDIENT,
-      ingredientData: item
-    })
+    dispatch(openIngredient(item))
   }
 
 
@@ -60,10 +57,6 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
   )
 }
 
-IngredientsItem.propTypes= {
-  handleOpenModal: PropTypes.func,
-  price: PropTypes.number.isRequired,
-  name: PropTypes.string.isRequired,
-  image: PropTypes.string.isRequired
-}
+IngredientsItem.propTypes = ingredientType;
+
 export default IngredientsItem;

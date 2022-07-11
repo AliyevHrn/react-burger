@@ -9,7 +9,6 @@ import { getItems } from '../../../services/actions/ingredients';
 import { useDrop } from 'react-dnd';
 import { addIngredient, addBun } from '../../../services/actions/ingredients';
 
-
 function BurgerConstructor() {
 
   const { bun } = useSelector(store => ({
@@ -75,6 +74,7 @@ function BurgerConstructor() {
                   <ConstructorItem
                   {...item}
                   key={item.uuid}
+                  key={index}
                   index={index}
                   />
                 )
@@ -107,6 +107,7 @@ function BurgerConstructor() {
         </div>
         <div className={`${Styles.totalBlock} mt-10 mb-10 pr-10`}>
           <TotalPrice/>
+          <OrderCheckout/>
           <OrderCheckout/>
         </div>
       </div>

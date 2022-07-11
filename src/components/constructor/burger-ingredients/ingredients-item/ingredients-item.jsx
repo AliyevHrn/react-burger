@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-dnd';
 import { openIngredient } from '../../../../services/actions/ingredient-detail';
 import { ingredientType } from '../../../../utils/types';
+import { OPEN_INGREDIENT } from '../../../../services/actions/ingredient-detail';
+
 
 function IngredientsItem({ data, _id, type, image, name, price }) {
 
@@ -33,7 +35,13 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const dispatch = useDispatch();
   const openIngredientDetail = item => {
+
     dispatch(openIngredient(item))
+    dispatch({
+      type: OPEN_INGREDIENT,
+      ingredientData: item
+    })
+
   }
 
 
@@ -56,6 +64,7 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
     </div>
   )
 }
+
 
 IngredientsItem.propTypes = ingredientType;
 

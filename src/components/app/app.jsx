@@ -33,7 +33,7 @@ function App() {
 			<AppHeader />
 			<main className="pl-5 pr-5 mt-10">
 				<Constructor/>
-			</main>
+			</main>		
 			<Modal onClose={closeIngredientModal} header={'Детали ингредиента'} state={ingredientShowed}>
 				<IngredientDetail />
 			</Modal>

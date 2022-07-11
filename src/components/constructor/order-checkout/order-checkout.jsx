@@ -12,7 +12,7 @@ function OrderCheckout() {
   }));
   const { bun } = useSelector(store => ({
     bun: store.ingredients.bun,
-  }));
+  }))
 
   const dispatch = useDispatch();
 
@@ -24,6 +24,7 @@ function OrderCheckout() {
     } else {
       return false;
     }
+    dispatch(sendNewRequest(ingredientIds))
   };
 
   return (

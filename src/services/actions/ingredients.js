@@ -9,6 +9,7 @@ export const ADD_BUN = 'ADD_BUN';
 export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
 export const CHANGE_INGREDIENT_POSITION = 'CHANGE_INGREDIENT_POSITION';
 
+
 function getItemsRequest() {
 	return {
 		type: GET_ITEMS_REQUEST,
@@ -64,6 +65,6 @@ export function getItems() {
 			})
 			.catch((err) => {
 				dispatch(getItemsFailed());
-			});
-	};
+			})
+	}
 }

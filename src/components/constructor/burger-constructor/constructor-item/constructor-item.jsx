@@ -2,9 +2,8 @@ import React, { useRef } from "react";
 import Styles from "./constructor-item.module.css";
 import { DragIcon, ConstructorElement } from '@ya.praktikum/react-developer-burger-ui-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { useDrag } from 'react-dnd';
+import { useDrag, useDrop } from 'react-dnd';
 import { changeIngredientPosition, deleteIngredient } from "../../../../services/actions/ingredients";
-import { useDrop } from "react-dnd";
 import { ingredientType } from '../../../../utils/types';
 
 function ConstructorItem({_id, index, name, price, image_mobile}) {
@@ -25,6 +24,7 @@ function ConstructorItem({_id, index, name, price, image_mobile}) {
     constructorItems.splice(hoverIndex, 0, dragElement[0]);
 
     dispatch(changeIngredientPosition(constructorItems));
+
   }
 
   const ref = useRef(null)

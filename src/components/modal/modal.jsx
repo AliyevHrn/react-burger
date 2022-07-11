@@ -5,8 +5,8 @@ import ModalOverlay from './modal-overlay/modal-overlay';
 import PropTypes from 'prop-types';
 import Styles from './modal.module.css';
 
-
 const modalRoot = document.getElementById("react-modals");
+
 
 function Modal ({header, children, onClose, state}) {
 

@@ -6,6 +6,7 @@ import {
 const initialState = {
 	ingredientData: {},
 	ingredientShowed: false,
+	isShowed: false,
 };
 
 export const modalIngredientReducer = (state = initialState, action) => {
@@ -15,6 +16,8 @@ export const modalIngredientReducer = (state = initialState, action) => {
 				...state,
 				ingredientData: action.payload,
 				ingredientShowed: true,
+				ingredientData: action.ingredientData,
+				isShowed: true,
 			};
 		}
 		case CLOSE_INGREDIENT: {
@@ -22,6 +25,7 @@ export const modalIngredientReducer = (state = initialState, action) => {
 				...state,
 				ingredientData: {},
 				ingredientShowed: false,
+				isShowed: false,
 			};
 		}
 		default:

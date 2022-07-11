@@ -39,6 +39,7 @@ export function sendNewRequest(data) {
 			})
 			.catch((err) => {
 				dispatch(sendOrderFailed());
-			});
-	};
+			})
+	}
 }
+

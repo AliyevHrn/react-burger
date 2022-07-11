@@ -7,6 +7,7 @@ import Modal from '../modal/modal';
 import { useSelector, useDispatch } from 'react-redux';
 import { closeIngredient } from '../../services/actions/ingredient-detail';
 import { closeOrder } from '../../services/actions/order-request';
+import Preloader from '../constructor/burger-constructor/preloader/preloader';
 
 
 function App() {
@@ -15,7 +16,7 @@ function App() {
 	const { ingredientShowed } = useSelector(store => {
 		return store.ingredient;
 	})
-	const { orderShowed, orderNumber } = useSelector(store => {
+	const { orderShowed, orderNumber, orderRequest } = useSelector(store => {
 		return store.order;
 	})
 
@@ -33,13 +34,18 @@ function App() {
 			<AppHeader />
 			<main className="pl-5 pr-5 mt-10">
 				<Constructor/>
-			</main>		
+			</main>
 			<Modal onClose={closeIngredientModal} header={'Детали ингредиента'} state={ingredientShowed}>
 				<IngredientDetail />
 			</Modal>
-			<Modal onClose={closeOrderModal} state={orderShowed}>
-				<OrderDetails id={orderNumber}/>
-			</Modal>
+			{
+				orderRequest ?
+					<Preloader/>
+				:
+				<Modal onClose={closeOrderModal} state={orderShowed}>
+					<OrderDetails id={orderNumber}/>
+				</Modal>
+			}
 		</>
 	);
 

@@ -26,7 +26,7 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const [{isDrag}, dragRef] = useDrag({
     type: type,
-    item: { _id },
+    item: { data },
     collect: monitor => ({
       isDrag: monitor.isDragging()
     })
@@ -35,13 +35,7 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
 
   const dispatch = useDispatch();
   const openIngredientDetail = item => {
-
-    dispatch(openIngredient(item))
-    dispatch({
-      type: OPEN_INGREDIENT,
-      ingredientData: item
-    })
-
+    dispatch(openIngredient(item));
   }
 
 

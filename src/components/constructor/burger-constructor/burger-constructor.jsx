@@ -29,8 +29,8 @@ function BurgerConstructor() {
     collect: monitor => ({
       isHoverConstructor: monitor.isOver()
     }),
-    drop(itemId) {
-      dispatch(addIngredient(itemId));
+    drop(item) {
+      dispatch(addIngredient(item));
     },
   });
 
@@ -39,12 +39,10 @@ function BurgerConstructor() {
     collect: monitor => ({
       isHoverBun: monitor.isOver()
     }),
-    drop(itemId) {
-      dispatch(addBun(itemId));
+    drop(item) {
+      dispatch(addBun(item));
     },
   });
-
-  console.log(constructorItems);
 
 
   return (
@@ -74,7 +72,6 @@ function BurgerConstructor() {
                   <ConstructorItem
                   {...item}
                   key={item.uuid}
-                  key={index}
                   index={index}
                   />
                 )
@@ -107,7 +104,6 @@ function BurgerConstructor() {
         </div>
         <div className={`${Styles.totalBlock} mt-10 mb-10 pr-10`}>
           <TotalPrice/>
-          <OrderCheckout/>
           <OrderCheckout/>
         </div>
       </div>

@@ -42,25 +42,13 @@ export const ingredientsReducer = (state = initialState, action) => {
 		case ADD_INGREDIENT: {
 			return {
 				...state,
-				constructorItems: [
-					...state.constructorItems,
-					...state.items.filter((item) => {
-						if (item.type !== 'bun') {
-							if(item._id === action._id) {
-								item.uuid = action.uuid;			
-								return item._id === action._id; 									
-							}
-						}
-					}),
-				],
+				constructorItems: [...state.constructorItems, action.item],
 			};
 		}
 		case ADD_BUN: {
 			return {
 				...state,
-				bun: state.items.filter(
-					(item) => item.type === 'bun' && item._id === action._id
-				)[0],
+				bun: action.bun,
 			};
 		}
 		case DELETE_INGREDIENT: {

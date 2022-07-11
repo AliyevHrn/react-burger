@@ -9,47 +9,48 @@ export const ADD_BUN = 'ADD_BUN';
 export const DELETE_INGREDIENT = 'DELETE_INGREDIENT';
 export const CHANGE_INGREDIENT_POSITION = 'CHANGE_INGREDIENT_POSITION';
 
-
 function getItemsRequest() {
 	return {
 		type: GET_ITEMS_REQUEST,
-	}
+	};
 }
 function getItemsSuccess(data) {
 	return {
 		type: GET_ITEMS_SUCCESS,
-		items: data
-	}
+		items: data,
+	};
 }
 function getItemsFailed() {
 	return {
 		type: GET_ITEMS_FAILED,
-	}
+	};
 }
-export function addIngredient (itemId) {
+export function addIngredient(item) {
 	return {
 		type: ADD_INGREDIENT,
-		...itemId,
-		uuid: uuidv4()
-	}
+		item: {
+			...item.data,
+			uuid: uuidv4(),
+		},
+	};
 }
-export function addBun (itemId) {
+export function addBun(item) {
 	return {
 		type: ADD_BUN,
-		...itemId
-	}
+		bun: item.data,
+	};
 }
 export function deleteIngredient(index) {
 	return {
 		type: DELETE_INGREDIENT,
-		payload: index
-	}
+		payload: index,
+	};
 }
 export function changeIngredientPosition(sortItems) {
 	return {
 		type: CHANGE_INGREDIENT_POSITION,
-		payload: sortItems
-	}
+		payload: sortItems,
+	};
 }
 
 export function getItems() {
@@ -65,6 +66,6 @@ export function getItems() {
 			})
 			.catch((err) => {
 				dispatch(getItemsFailed());
-			})
-	}
+			});
+	};
 }

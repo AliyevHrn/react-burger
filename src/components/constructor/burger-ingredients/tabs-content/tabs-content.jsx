@@ -23,7 +23,6 @@ Section.propTypes = {
 }
 
 
-
 function TabsContent (props) {
 
   const { items } = useSelector(store => ({

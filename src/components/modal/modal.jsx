@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import ModalHeader from './modal-header/modal-header';
 import ModalOverlay from './modal-overlay/modal-overlay';
 import PropTypes from 'prop-types';
 import Styles from './modal.module.css';
 
-
 const modalRoot = document.getElementById("react-modals");
+
 
 function Modal ({header, children, onClose, state}) {
 
-  React.useEffect(() => {
+  useEffect(() => {
     const closeByEscape = (e) => {
       if (e.key === 'Escape') {
         onClose();
@@ -22,9 +22,11 @@ function Modal ({header, children, onClose, state}) {
     return () => document.removeEventListener('keydown', closeByEscape)
   }, [])
 
+
+
   return ReactDOM.createPortal(
     <>
-      <div className={`${Styles.Modal} ${state === 'shown' ? Styles.shown : Styles.hidden}`}>
+      <div className={`${Styles.Modal} ${state ? Styles.shown : Styles.hidden}`}>
         <div className={Styles.window}>
           <ModalHeader header={header} onClose={onClose}/>
           <div className={Styles.body}>
@@ -38,8 +40,9 @@ function Modal ({header, children, onClose, state}) {
   );
 }
 Modal.propTypes = {
-  state: PropTypes.string.isRequired,
+  state: PropTypes.bool,
   onClose: PropTypes.func.isRequired,
-  header: PropTypes.string
+  header: PropTypes.string,
+  children: PropTypes.node
 }
 export default Modal;

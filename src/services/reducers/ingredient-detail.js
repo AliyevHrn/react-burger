@@ -16,7 +16,6 @@ export const modalIngredientReducer = (state = initialState, action) => {
 				...state,
 				ingredientData: action.payload,
 				ingredientShowed: true,
-				ingredientData: action.ingredientData,
 				isShowed: true,
 			};
 		}

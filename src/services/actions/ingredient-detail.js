@@ -4,11 +4,11 @@ export const CLOSE_INGREDIENT = 'CLOSE_INGREDIENT';
 export function openIngredient(item) {
 	return {
 		type: OPEN_INGREDIENT,
-		payload: item
-	}
+		payload: item,
+	};
 }
 export function closeIngredient() {
 	return {
-		type: CLOSE_INGREDIENT
-	}
+		type: CLOSE_INGREDIENT,
+	};
 }

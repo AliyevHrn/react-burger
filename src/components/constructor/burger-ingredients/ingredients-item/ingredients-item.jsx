@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useDrag } from 'react-dnd';
 import { openIngredient } from '../../../../services/actions/ingredient-detail';
 import { ingredientType } from '../../../../utils/types';
-import { OPEN_INGREDIENT } from '../../../../services/actions/ingredient-detail';
 
 
 function IngredientsItem({ data, _id, type, image, name, price }) {
@@ -37,7 +36,6 @@ function IngredientsItem({ data, _id, type, image, name, price }) {
   const openIngredientDetail = item => {
     dispatch(openIngredient(item));
   }
-
 
   return (
     !isDrag &&
